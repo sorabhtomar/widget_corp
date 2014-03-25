@@ -23,7 +23,13 @@
 
 				while ( $subject = mysqli_fetch_assoc($subject_set) ) { ?>
 					
-					<li class="menu-item-<?php echo $subject["id"] ?>">
+					<?php 
+						echo "<li";
+						if ($subject["id"] == $selected_subject_id) {
+							echo " class=\"selected\""; 
+						}
+						echo ">";
+					?>
 						<a href="manage_content.php?subject=<?php echo urlencode($subject["id"]) ?>">
 							<?php echo $subject["menu_name"] ?>
 						</a>
@@ -31,7 +37,13 @@
 						<ul class="pages">
 							<?php
 								while ($page = mysqli_fetch_assoc($page_set)) { ?>
-									<li class="page-item-<?php echo $page["id"] ?>">
+									<?php 
+										echo "<li";
+										if ($page["id"] == $selected_page_id) {
+											echo " class=\"selected\""; 
+										}
+										echo ">";
+									?>
 										<a href="manage_content.php?page=<?php echo urlencode($page["id"]) ?>">
 											<?php echo $page["menu_name"] ?>
 										</a>
