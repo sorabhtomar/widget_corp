@@ -21,9 +21,16 @@
 		</div>
 		<div id="page">
 			<h2>Manage Content</h2>
-			<?php echo $selected_subject_id; ?>
-			<br />
-			<?php echo $selected_page_id; ?>
+			<?php if ($selected_subject_id) { ?>
+			
+				<?php $current_subject = get_subject_by_id( $selected_subject_id ); ?>
+				Menu name: <?php echo $current_subject["menu_name"]; ?>
+
+			<?php } elseif ($selected_page_id) { ?>
+				<?php echo $selected_page_id; ?>
+			<?php } else { ?>
+				Please select a subject or a page.
+			<?php } ?>
 		</div>
 	</div>
 
